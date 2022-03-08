@@ -1,0 +1,16 @@
+<%= row do %>
+  <%= col size: 12, lg: { size: 6, offset: 3 } do %>
+    <div class="card ">
+      <div class="card-header text-danger">
+        <%= pluralize(objekt.errors.count, "Error") %> Prevented your <%= objekt.class.name.humanize %> from being saved.
+      </div>
+      <div class="card-body">
+        <ul>
+          <% objekt.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<% end %>
