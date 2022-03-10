@@ -7,7 +7,7 @@ module Bootstrap
     end
 
     def progress_render(partial_name, locals: {})
-      render(partial: "layouts/bootstrap/progress/#{partial_name}", locals: locals)
+      render(partial: "helpers/bootstrap/progress/#{partial_name}", locals: locals)
     end
   end
 end

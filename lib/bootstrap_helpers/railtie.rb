@@ -14,6 +14,7 @@ module BootstrapHelpers
       ActiveSupport.on_load(:action_view) { include Bootstrap::GridHelper }
       ActiveSupport.on_load(:action_view) { include Bootstrap::ErrorHelper }
       ActiveSupport.on_load(:action_view) { include Bootstrap::ProgressHelper }
+      ActiveSupport.on_load(:action_view) { include Bootstrap::ErrorHelper }
     end
   end
 end
