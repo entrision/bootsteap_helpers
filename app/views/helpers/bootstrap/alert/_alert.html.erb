@@ -1,0 +1,19 @@
+<div class="alert alert-<%= level %> <%= dismissible ? 'alert-dismissible fade show' : '' %>" role="alert">
+  <% unless header.blank? %>
+    <h4 class="alert-heading">
+      <%= icon %> <%= header %>
+    </h4>
+  <% end %>
+  <% if content.blank? %>
+    <p>
+      <% if header.blank? %><%= icon %><% end %>
+      <%= text %>
+    </p>
+  <% else %>
+    <% if header.blank? %><%= icon %><% end %>
+    <%= content %>
+  <% end %>
+  <% if dismissible %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+</div>

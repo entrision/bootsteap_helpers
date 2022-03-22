@@ -1,0 +1,10 @@
+<% flash.each do |key, value| %>
+  <% next if value.blank? %>
+  <%= row id: 'flash-row' do %>
+    <%= col size: 12, md: { size: 8, offset:1 }, lg: { size: 6, offset: 3 } do %>
+      <%= alert_message value.try(:html_safe), level: key.to_s %>
+    <% end %>
+  <% end %>
+<% end %>
+
+

@@ -1,0 +1,7 @@
+<% if content %>
+  <%= link_to url, options do %>
+    <%= content %>
+  <% end %>
+<% else %>
+  <%= link_to title, url, options %>
+<% end %>
