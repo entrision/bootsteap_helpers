@@ -6,6 +6,7 @@ require 'bootstrap_helpers/helpers/error_helper'
 require 'bootstrap_helpers/helpers/grid_helper'
 require 'bootstrap_helpers/helpers/progress_helper'
 require 'bootstrap_helpers/helpers/alert_helper'
+require 'bootstrap_helpers/helpers/icon_helper'
 
 module BootstrapHelpers
   class Railtie < Rails::Railtie
@@ -17,6 +18,7 @@ module BootstrapHelpers
       ActiveSupport.on_load(:action_view) { include Bootstrap::ProgressHelper }
       ActiveSupport.on_load(:action_view) { include Bootstrap::ErrorHelper }
       ActiveSupport.on_load(:action_view) { include Bootstrap::AlertHelper }
+      ActiveSupport.on_load(:action_view) { include Bootstrap::IconHelper }
     end
   end
 end
