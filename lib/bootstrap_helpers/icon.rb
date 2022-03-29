@@ -6,14 +6,21 @@ module BootstrapHelpers
       @ac = view_context
     end
 
-    def self.render(name)
+    def self.render(name, options = {})
+      data = 'X'
       if File.exist?("#{Rails.root}/app/icons/#{name}.svg")
-        File.open("#{Rails.root}/app/icons/#{name}.svg").read.html_safe
+        data = File.open("#{Rails.root}/app/icons/#{name}.svg").read.html_safe
       else
-        File.open("#{__dir__}/../../icons/#{name}.svg").read.html_safe
+        data = File.open("#{__dir__}/../../icons/#{name}.svg").read.html_safe
       end
+      data = data.to_s
+      if data.starts_with? '<svg '
+        data.insert(5, " style='#{options[:style].html_safe}' ".html_safe) if options[:style]
+        data.insert(5, " class='#{options[:class].html_safe}' ".html_safe) if options[:class]
+      end
+      data.html_safe
     rescue Errno::ENOENT
-      'X'.html_safe
+      data.html_safe
     end
 
     def self.enumerate

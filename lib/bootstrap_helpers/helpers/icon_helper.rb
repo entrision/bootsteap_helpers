@@ -3,8 +3,8 @@
 module BootstrapHelpers
   module Helpers
     module IconHelper
-      def icon(name)
-        BootstrapHelpers::Icon.render(name)
+      def icon(name, options = {})
+        BootstrapHelpers::Icon.render(name, options)
       end
     end
   end
