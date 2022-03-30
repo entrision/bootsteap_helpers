@@ -15,26 +15,6 @@ module BootstrapHelpers
     end
     alias column col
 
-    def self.generate_col_classes(options)
-      classes = []
-      classes << options[:class] if options[:class]
-      classes << "col-#{options[:size].to_i}" if options[:size]
-      classes << "offset-#{options[:offset].to_i}" if options[:offset]
-      %i[sm md lg xl].each do |size|
-        classes << get_classes(options, size)
-      end
-      classes.flatten
-    end
-
-    def self.get_classes(options, key)
-      classes = []
-      if options[key]
-        classes << "col-#{key}-#{options[key][:size]}" if options[key][:size]
-        classes << "offset-#{key}-#{options[key][:offset]}" if options[key][:offset]
-      end
-      classes
-    end
-
     private
 
     def bs_render(template:, locals: {}, &block)

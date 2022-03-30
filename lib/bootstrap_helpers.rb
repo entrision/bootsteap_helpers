@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'bootstrap_helpers/configuration'
 require 'listen'
 require 'zeitwerk'
 

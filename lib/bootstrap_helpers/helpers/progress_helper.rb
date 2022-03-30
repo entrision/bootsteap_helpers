@@ -8,6 +8,7 @@ module BootstrapHelpers
         animated = true if options[:animated].nil?
         striped = options[:striped]
         striped = true if options[:striped].nil?
+        options = BootstrapHelpers::Options.new(options)
         progress_render('bar', locals: { percentage: percentage, color: color, label: label, options: options, striped: striped, animated: animated })
       end
 

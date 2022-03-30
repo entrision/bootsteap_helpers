@@ -1,0 +1,13 @@
+equivalents:
+  - attributes:
+    - display
+    - d
+    prefix: d
+    equals:
+    - false: none
+    - true: block
+  - attributes:
+    - size
+    - col
+    prefix: col
+    equals: []
