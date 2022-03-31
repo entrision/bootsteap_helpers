@@ -3,12 +3,14 @@
 module BootstrapHelpers
   module Helpers
     module AlertHelper
-      def alert_message(text = '', level: 'warning', header: nil, icon: true, dismissible: true, &block)
+      def alert_message(text = '', options = {}, &block)
+        unless block.nil?
+          options.merge! text if text.is_a? Hash
+          options[:icon] = false
+          text = nil
+        end
         alert = BootstrapHelpers::Alert.new(self)
-        icon = alert.generate_icon(icon, level)
-        icon = nil unless block.nil?
-        content = capture(alert, &block) unless block.nil?
-        bs_render template: 'alert/alert', content: content, locals: { icon: icon, dismissible: dismissible, level: level, header: header, content: content, text: text }
+        bs_render template: 'alert/alert', klass: alert, block: block, options: options, locals: { text: text }
       end
 
       def flash_messages

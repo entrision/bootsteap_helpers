@@ -5,10 +5,10 @@ module BootstrapHelpers
     def initialize(*args, **named_args)
       @unnamed_args = args
       @named_args = named_args
+      @processed = false
 
       @classes = []
       @styles = []
-      parse_out_classes(@named_args)
     end
 
     def id
@@ -26,11 +26,28 @@ module BootstrapHelpers
     end
 
     def to_s(include_classes: [])
+      process unless @processed
       include_classes = include_classes.join(' ') if include_classes.is_a? Array
       "style=\"#{styles.join(';')}\" class=\"#{include_classes} #{classes.join(' ')}\" id=\"#{id}\"".html_safe
     end
 
+    def extract(key, default: nil)
+      return instance_variable_get("@#{key}") unless instance_variable_get("@#{key}").nil?
+      return default unless @named_args.key? key
+
+      value = @named_args.delete key
+      instance_variable_set("@#{key}", value)
+      return default if value.nil?
+
+      value
+    end
+
     private
+
+    def process
+      @processed = true
+      parse_out_classes(@named_args)
+    end
 
     def parse_out_classes(values, size: nil, attrib: nil)
       if values.is_a? Hash

@@ -1,19 +1,21 @@
-<div class="alert alert-<%= level %> <%= dismissible ? 'alert-dismissible fade show' : '' %>" role="alert">
-  <% unless header.blank? %>
+<div <%= options.to_s(include_classes: ['alert', "alert-#{options.extract(:level, default: 'warning')}", 'fade', 'show', (options.extract(:dismissible, default: true) ? 'alert-dismissible' : '')]) %> role='alert'>
+  <% unless options.extract(:header, default: nil).blank? %>
     <h4 class="alert-heading">
-      <%= icon %> <%= header %>
+      <%= klass.generate_icon(options.extract(:icon, default: true), options.extract(:level, default: 'warning')) %> <%= options.extract(:header, default: nil) %>
     </h4>
   <% end %>
   <% if content.blank? %>
     <p>
-      <% if header.blank? %><%= icon %><% end %>
+      <% if options.extract(:header, default: nil).blank? %><%= klass.generate_icon(options.extract(:icon, default: true), options.extract(:level, default: 'warning'))  %><% end %>
       <%= text %>
     </p>
   <% else %>
-    <% if header.blank? %><%= icon %><% end %>
+    <% if options.extract(:header, default: nil).blank? %>
+      <%= klass.generate_icon(options.extract(:icon, default: true), options.extract(:level, default: 'warning')) %>
+    <% end %>
     <%= content %>
   <% end %>
-  <% if dismissible %>
+  <% if options.extract(:dismissible, default: true) %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   <% end %>
 </div>

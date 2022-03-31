@@ -1,3 +1,3 @@
-<nav class="navbar <%= classes.flatten.join(' ') %>">
+<nav <%= options.to_s(include_classes: 'navbar') %> >
   <%= content %>
 </nav>

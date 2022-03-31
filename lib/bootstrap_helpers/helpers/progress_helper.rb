@@ -3,17 +3,8 @@
 module BootstrapHelpers
   module Helpers
     module ProgressHelper
-      def progress_bar(percentage, color: 'success', label: nil, options: {})
-        animated = options[:animated]
-        animated = true if options[:animated].nil?
-        striped = options[:striped]
-        striped = true if options[:striped].nil?
-        options = BootstrapHelpers::Options.new(options)
-        progress_render('bar', locals: { percentage: percentage, color: color, label: label, options: options, striped: striped, animated: animated })
-      end
-
-      def progress_render(partial_name, locals: {})
-        render(partial: "helpers/bootstrap/progress/#{partial_name}", locals: locals)
+      def progress_bar(percentage, options: {})
+        bs_render('progress/bar', options: options, locals: { percentage: percentage })
       end
     end
   end
