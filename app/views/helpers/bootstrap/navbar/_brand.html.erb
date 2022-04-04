@@ -1,3 +1,3 @@
-<%= link_to target, class: "navbar-brand #{classes}" do %>
-  <%= content %>
+<%= link_to options.extract(:target, default: '/'), class: "navbar-brand #{options.classes.join(' ')}" do %>
+  <%= options.extract(:content) %>
 <% end %>

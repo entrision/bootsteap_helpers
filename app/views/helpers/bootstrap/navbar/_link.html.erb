@@ -1,9 +1,9 @@
 <li class="nav-item">
   <% if content %>
-    <%= link_to url, class: klass, data: data, aria: aria do %>
+    <%= link_to url, class: options.classes.join(' '), data: data, aria: aria do %>
       <%= content %>
     <% end %>
   <% else %>
-    <%= link_to title, url, class: klass, data: data, aria: aria %>
+    <%= link_to title, url, class: options.classes.join(' '), data: data, aria: aria %>
   <% end %>
 </li>

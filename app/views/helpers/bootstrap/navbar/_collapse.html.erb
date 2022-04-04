@@ -1,3 +1,3 @@
-<div class="collapse navbar-collapse <%= classes %>"  id='<%= id %>' style='<%= style %>'>
+<div <%= options.to_s(include_classes: %w[collapse navbar-collapse]) %>>
   <%= content %>
 </div>

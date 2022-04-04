@@ -1,3 +1,3 @@
-<ul class="nav navbar-nav <%= klass %>">
+<ul <%= options.to_s(include_classes: %w[nav navbar-nav]) %>>
   <%= content %>
 </ul>

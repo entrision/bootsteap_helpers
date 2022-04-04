@@ -1,6 +1,6 @@
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#<%= id %>" aria-controls="<%= id %>" aria-expanded="false" aria-label="Toggle">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#<%= options.id %>" aria-controls="<%= options.id %>" aria-expanded="false" aria-label="Toggle">
   <span class="navbar-toggler-icon"></span>
 </button>
-<div class="collapse navbar-collapse bg-dark text-right pt-2" id="<%= id %>">
-  <%= capture(&block) %>
+<div class="collapse navbar-collapse bg-dark text-right pt-2" id="<%= options.id %>">
+  <%= content %>
 </div>
