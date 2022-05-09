@@ -1,0 +1,8 @@
+<div <%= options.to_s(include_classes: ['card']) %>>
+  <% if header %>
+    <div class='card-header'>
+      <%= header %>
+    </div>
+  <% end %>
+  <%= content %>
+</div>

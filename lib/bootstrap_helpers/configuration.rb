@@ -19,7 +19,7 @@ module BootstrapHelpers
     def initialize
       @equivalents = YAML.safe_load(File.read(File.expand_path('../../config/equivalents.yaml', __dir__))).deep_symbolize_keys[:equivalents]
       @sizes = %i[xs sm md lg xl xxl].freeze
-      @excluded_attributes = %i[styles classes css style class id header icon].freeze
+      @excluded_attributes = %i[styles classes css style class id header icon brakepoint].freeze
     end
   end
 end

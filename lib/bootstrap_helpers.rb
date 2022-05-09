@@ -25,6 +25,8 @@ def bootstrap_helpers_load_helpers
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::ErrorHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::AlertHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::IconHelper }
+  ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::CardHelper }
+  ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::ContainerHelper }
 end
 
 module BootstrapHelpers

@@ -27,6 +27,7 @@ module BootstrapHelpers
 
     def to_s(include_classes: [])
       process unless @processed
+      include_classes = add_breakpoint(include_classes)
       include_classes = include_classes.join(' ') if include_classes.is_a? Array
       "style=\"#{styles.join(';')}\" class=\"#{include_classes} #{classes.join(' ')}\" id=\"#{id}\"".html_safe
     end
@@ -43,6 +44,17 @@ module BootstrapHelpers
     end
 
     private
+
+    def add_breakpoint(classes = [])
+      return classes if classes.blank?
+      return classes if extract(:breakpoint, default: nil).nil?
+
+      modified = []
+      classes.each do |klass|
+        modified << "#{klass}-#{extract(:breakpoint, default: '')}"
+      end
+      modified
+    end
 
     def process
       @processed = true
