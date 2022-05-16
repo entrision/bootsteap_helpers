@@ -6,7 +6,7 @@ module BootstrapHelpers
       @unnamed_args = args
       @named_args = named_args
       @processed = false
-
+      @data = @named_args.delete :data
       @classes = []
       @styles = []
     end
@@ -29,7 +29,7 @@ module BootstrapHelpers
       process unless @processed
       include_classes = add_breakpoint(include_classes)
       include_classes = include_classes.join(' ') if include_classes.is_a? Array
-      "style=\"#{styles.join(';')}\" class=\"#{include_classes} #{classes.join(' ')}\" id=\"#{id}\"".html_safe
+      "style=\"#{styles.join(';')}\" class=\"#{include_classes} #{classes.join(' ')}\" id=\"#{id}\" #{add_data}".html_safe
     end
 
     def extract(key, default: nil)
@@ -44,6 +44,16 @@ module BootstrapHelpers
     end
 
     private
+
+    def add_data
+      return unless @data
+
+      attribs = []
+      @data.each do |key, value|
+        attribs << "data-#{key}=#{value}"
+      end
+      attribs.join(' ')
+    end
 
     def add_breakpoint(classes = [])
       return classes if classes.blank?

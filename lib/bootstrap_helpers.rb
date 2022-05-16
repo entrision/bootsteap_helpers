@@ -16,7 +16,11 @@ end.start
 
 require 'bootstrap_helpers/railtie' if defined?(Rails)
 
+include BootstrapHelpers::Helpers::NavHelper
+include BootstrapHelpers::Helpers::ButtonHelper
+
 def bootstrap_helpers_load_helpers
+  ActiveSupport.on_load(:action_View) { include BootstrapHelpers::Helpers::NavHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::BaseHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::NavBarHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::GridHelper }
@@ -27,6 +31,8 @@ def bootstrap_helpers_load_helpers
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::IconHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::CardHelper }
   ActiveSupport.on_load(:action_view) { include BootstrapHelpers::Helpers::ContainerHelper }
+  ActiveSupport.on_load(:action_View) { include BootstrapHelpers::Helpers::NavHelper }
+  ActiveSupport.on_load(:action_View) { include BootstrapHelpers::Helpers::ButtonHelper }
 end
 
 module BootstrapHelpers

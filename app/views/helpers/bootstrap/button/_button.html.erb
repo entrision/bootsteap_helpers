@@ -1,0 +1,8 @@
+<a href="<%= url_for(url) %>" <%= options.to_s(include_classes: [:btn, "btn-#{type}".to_sym]) %> >
+  <% if icon_name %>
+    <%= icon(icon_name) %>
+  <% end %>
+  <%= title %>
+  <%= content %>
+</a>
+

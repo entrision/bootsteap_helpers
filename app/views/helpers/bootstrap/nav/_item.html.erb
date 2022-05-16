@@ -1,0 +1,17 @@
+<li class="nav-item w-100">
+  <% if content.blank? %>
+    <a href="<%= url_for(url) %>" class="nav-link align-middle px-0">
+      <%= icon(the_icon) %><span class="ms-2 d-none d-sm-inline"><%= title %></span>
+    </a>
+  <% else %>
+    <li>
+      <a href="#sub<%= options.id %>" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+        <%= icon(the_icon) %>
+        <span class="ms-1 d-none d-sm-inline"><%= title %></span>
+      </a>
+      <ul class="collapse nav flex-column ms-4" id="sub<%= options.id %>" data-bs-parent="#menu">
+        <%= content %>
+      </ul>
+    </li>
+  <% end %>
+</li>
