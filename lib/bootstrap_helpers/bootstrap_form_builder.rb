@@ -21,6 +21,11 @@ module BootstrapHelpers
       @template.render partial: 'helpers/bootstrap/forms/text_field', locals: { field_name: field_name, options: options, label: label, field: super }
     end
 
+    def password_field(method, options = {})
+      field_name, label, options = field_settings(method, options)
+       @template.render partial: 'helpers/bootstrap/forms/password_field', locals: { field_name: field_name, options: options, label: label, field: super }
+     end
+
     def submit(title = 'Save', options = {})
       css = options[:class] || ''
       css = "#{css} btn btn-primary"
