@@ -1,5 +1,5 @@
 <div <%= options.to_s(include_classes: ['progress']) %>>
-  <div class="progress-bar <%= options.extract(:striped, default: true) ? 'progress-bar-striped' : '' %>  <%= options.extract(:animated, default: true)  ? 'progress-bar-animated' : '' %> bg-<%= options.extract(:color, default: 'success')  %>" role="progressbar" style="width: <%= percentage %>%; <%= options.styles.join(';') %>" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar <%= options.extract(:striped, default: false) ? 'progress-bar-striped' : '' %>  <%= options.extract(:animated, default: false)  ? 'progress-bar-animated' : '' %> bg-<%= options.extract(:color, default: 'success')  %>" role="progressbar" style="width: <%= percentage %>%; <%= options.styles.join(';') %>" aria-valuenow="<%= percentage %>" aria-valuemin="0" aria-valuemax="100">
     <%= options.extract(:label) %>
   </div>
 </div>

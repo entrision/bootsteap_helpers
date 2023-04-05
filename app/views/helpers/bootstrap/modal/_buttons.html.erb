@@ -1,0 +1,15 @@
+<% unless options.raw[:secondary_button_text].blank? %>
+  <button type="button" class="<%= modal_button_classes(primary: false, options: options.raw) %>" data-bs-dismiss="modal" id='<%= modal_id %>--negitive'>
+    <%= options.raw[:secondary_button_text] || 'Close' %>
+  </button>
+<% end %>
+
+<% if !options.raw[:primary_button_text].blank? || (options.raw[:input] && options.raw[:source]) %>
+  <% if options.raw[:form] && options.raw[:submit] %>
+     <%= options.raw[:form].submit options.raw[:submit], class: modal_button_classes(primary: true, options: options.raw), data: { disable_with: "Submitting..." } %>
+  <% else %>
+    <button type='button' class='<%= modal_button_classes(primary: true, options: options.raw) %> copy-artifact' data-bs-dismiss="modal" <%= data_bs_mapping(options.raw) %> id='<%= modal_id %>--positive'>
+      <%= options.raw[:primary_button_text] || 'Save' %>
+    </button>
+  <% end %>
+<% end %>

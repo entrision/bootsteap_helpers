@@ -17,6 +17,10 @@ module BootstrapHelpers
       @named_args[:id] = SecureRandom.uuid
     end
 
+    def raw
+      @named_args
+    end
+
     def classes
       @classes + attribute_parse(%i[class classes css], ' ')
     end

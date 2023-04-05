@@ -1,5 +1,5 @@
 module BootstrapHelpers
-  class Alert
+  class Alert < BootstrapHelpers::Base
     include ActionView::Helpers::CaptureHelper
 
     def initialize(view_context)
@@ -35,18 +35,6 @@ module BootstrapHelpers
 
     def heading(text = '', &block)
       bs_render template: 'alert/heading', locals: { text: text }, &block
-    end
-
-    private
-
-    def bs_render(template:, locals: {}, &block)
-      raise ArgumentError, 'template is not formatted correctly, should be section/fragment' if template.split('/').length != 2
-
-      section = template.split('/').first
-      fragment = template.split('/').last
-      content = locals[:content]
-      content = @ac.capture(self, &block) if block_given?
-      @ac.render(partial: "helpers/bootstrap/#{section}/#{fragment}", locals: locals.merge({ content: content }))
     end
   end
 end

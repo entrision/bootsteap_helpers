@@ -1,0 +1,13 @@
+<% uuid = "U#{SecureRandom.uuid}" %>
+<div class="accordion-item">
+  <h2 class="accordion-header" id="heading-<%= uuid %>">
+    <button class="accordion-button <%= first ? '' : 'collapsed' %>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<%= uuid %>" aria-expanded="true" aria-controls="collapse-<%= uuid %>">
+      <%= title %>
+    </button>
+  </h2>
+  <div id="collapse-<%= uuid %>" class="accordion-collapse collapse <%= first ? 'show' : '' %>" aria-labelledby="heading-<%= uuid %>" data-bs-parent="#<%= parent %>">
+    <div class="accordion-body">
+      <%= content %>
+    </div>
+  </div>
+</div>

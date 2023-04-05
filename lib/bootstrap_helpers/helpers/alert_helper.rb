@@ -3,7 +3,7 @@
 module BootstrapHelpers
   module Helpers
     module AlertHelper
-      def alert_message(text = '', options = {}, &block)
+      def alert_message(text = '', options: {}, &block)
         unless block.nil?
           options.merge! text if text.is_a? Hash
           options[:icon] = false
