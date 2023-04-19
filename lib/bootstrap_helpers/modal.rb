@@ -9,11 +9,11 @@ module BootstrapHelpers
     end
 
     def small_modal(id, title, options = {}, &block)
-      bs_render template: 'modal/small_modal', locals: { modal_id: id, title: title, options: options }, block: block
+      bs_render template: 'modal/small_modal', options: options, locals: { modal_id: id, title: title, options: options }, block: block
     end
 
     def large_modal(id, title, options = {}, &block)
-      bs_render template: 'modal/large_modal', locals: { modal_id: id, title: title, options: options }, block: block
+      bs_render template: 'modal/large_modal', options: options, locals: { modal_id: id, title: title, options: options }, block: block
     end
   end
 end
