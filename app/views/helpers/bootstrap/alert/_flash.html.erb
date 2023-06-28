@@ -2,7 +2,9 @@
   <% next if value.blank? %>
   <%= row id: 'flash-row' do %>
     <%= col size: 12, md: { size: 8, offset:1 }, lg: { size: 6, offset: 3 } do %>
-      <%= alert_message value.try(:html_safe), level: key.to_s %>
+      <% key = 'danger' if key == 'alert' %>
+      <% key = 'info' if key == 'notice' %>
+      <%= alert_message value.try(:html_safe), options: { level: key.to_s } %>
     <% end %>
   <% end %>
 <% end %>

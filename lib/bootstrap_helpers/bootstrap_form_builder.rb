@@ -23,8 +23,18 @@ module BootstrapHelpers
 
     def password_field(method, options = {})
       field_name, label, options = field_settings(method, options)
-       @template.render partial: 'helpers/bootstrap/forms/password_field', locals: { field_name: field_name, options: options, label: label, field: super }
-     end
+      @template.render partial: 'helpers/bootstrap/forms/password_field', locals: { field_name: field_name, options: options, label: label, field: super }
+    end
+
+    def select(method, collection, _something = {}, options = {})
+      field_name, label, options = field_settings(method, options)
+      @template.render partial: 'helpers/bootstrap/forms/select', locals: { field_name: field_name, options: options, label: label, field: super, collection: collection }
+    end
+
+    def file_field(method, options = {})
+      field_name, label, options = field_settings(method, options)
+      @template.render partial: 'helpers/bootstrap/forms/file_field', locals: { field_name: field_name, options: options, label: label, field: super }
+    end
 
     def submit(title = 'Save', options = {})
       css = options[:class] || ''

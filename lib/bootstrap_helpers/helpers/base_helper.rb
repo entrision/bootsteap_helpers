@@ -9,7 +9,8 @@ module BootstrapHelpers
         section = template.split('/').first
         fragment = template.split('/').last
         content = capture(klass, &block) unless block.nil?
-        options = BootstrapHelpers::Options.new(options)
+
+        options = BootstrapHelpers::Options.new(**options)
         render(partial: "helpers/bootstrap/#{section}/#{fragment}", locals: locals.merge({ content: content, options: options, klass: klass }))
       end
     end
