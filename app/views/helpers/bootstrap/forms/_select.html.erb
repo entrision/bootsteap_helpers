@@ -1,0 +1,7 @@
+<div class="form-group mb-4">
+  <label for="<%= field_name %>"><%= label %></label>
+  <%= field %>
+  <% unless options[:help].blank? %>
+    <small class="form-text text-muted"><%= options[:help] %></small>
+  <% end %>
+</div>
