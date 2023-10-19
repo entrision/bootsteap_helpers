@@ -33,7 +33,13 @@ module BootstrapHelpers
 
     def file_field(method, options = {})
       field_name, label, options = field_settings(method, options)
-      @template.render partial: 'helpers/bootstrap/forms/file_field', locals: { field_name: field_name, options: options, label: label, field: super }
+      @template.render partial: 'helpers/bootstrap/forms/file_field', locals: { field_name: field_name, options: options, label: label, field: super(method, options) }
+    end
+
+    def check_box(method, options = {})
+      options.merge!({ class: 'form-check-input' })
+      field_name, label, options = field_settings(method, options)
+      @template.render partial: 'helpers/bootstrap/forms/check_box', locals: { field_name: field_name, options: options, label: label, field: super }
     end
 
     def submit(title = 'Save', options = {})
