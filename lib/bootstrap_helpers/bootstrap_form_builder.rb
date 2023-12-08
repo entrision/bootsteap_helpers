@@ -42,6 +42,11 @@ module BootstrapHelpers
       @template.render partial: 'helpers/bootstrap/forms/check_box', locals: { field_name: field_name, options: options, label: label, field: super }
     end
 
+    def rich_text_area(method, options = {})
+      field_name, label, options = field_settings(method, options)
+      @template.render partial: 'helpers/bootstrap/forms/rich_text_area', locals: { field_name: field_name, options: options, label: label, field: super }
+    end
+
     def submit(title = 'Save', options = {})
       css = options[:class] || ''
       css = "#{css} btn btn-primary"
